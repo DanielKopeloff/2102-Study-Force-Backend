@@ -72,6 +72,12 @@ public class SolutionController {
         return ResponseEntity.noContent().build();
     }
 
+    /**
+     * Updates the solution column total votes based off every solution
+     * vote for that solution
+     * @param solutionId
+     * @return
+     */
     @PutMapping
     public SolutionDTO updateSoltuionTotalVote(@PathVariable int solutionId){
         return solutionService.updateSolutionTotalVotes(solutionId);

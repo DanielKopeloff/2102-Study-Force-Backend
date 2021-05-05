@@ -71,4 +71,10 @@ public class SolutionController {
         solutionService.deleteSolution(solutionId);
         return ResponseEntity.noContent().build();
     }
+
+    @PutMapping
+    public SolutionDTO updateSoltuionTotalVote(@PathVariable int solutionId){
+        return solutionService.updateSolutionTotalVotes(solutionId);
+    }
+
 }

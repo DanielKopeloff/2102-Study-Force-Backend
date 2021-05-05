@@ -78,6 +78,12 @@ public class Solution {
     private Date creationTime;
 
     /**
+     * This will be the sum of votes for any given solution
+     */
+    @Column(name = "total_votes")
+    private int totalVotes;
+
+    /**
      * Bidirectional relationship needed to cascade delete SolutionVotes
      */
     @JsonBackReference

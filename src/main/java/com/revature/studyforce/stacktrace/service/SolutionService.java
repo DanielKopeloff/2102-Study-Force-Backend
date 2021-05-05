@@ -59,6 +59,7 @@ public class SolutionService {
                 solutionDTO.getBody(),
                 solutionDTO.getAdminSelected(),
                 solutionDTO.getCreationTime(),
+                solutionDTO.getTotalVotes(),
                 null);
 
         return SolutionDTO.solutionToDTO().apply(solutionRepository.save(solution));
@@ -85,6 +86,7 @@ public class SolutionService {
                     solutionDTO.getBody(),
                     solutionDTO.getAdminSelected(),
                     solutionDTO.getCreationTime(),
+                    solutionDTO.getTotalVotes(),
                     null);
             return SolutionDTO.solutionToDTO().apply(solutionRepository.save(newSolution));
         }
@@ -96,5 +98,17 @@ public class SolutionService {
      */
     public void deleteSolution(int solutionId){
         solutionRepository.deleteBySolutionId(solutionId);
+    }
+
+    /**
+     * Update total votes for any given solution.
+     * @param solutionId The solutionId used to update any given solution total votes
+     * @return will return a solution with updated total votes on solution table
+     */
+    public SolutionDTO updateSolutionTotalVotes(int solutionId){
+        Optional<Solution> solutionDTO = solutionRepository.findById(solutionId);
+
+
+        return solutionRepository.updateSolutionTotalVotesBySolutionId(solutionId);
     }
 }

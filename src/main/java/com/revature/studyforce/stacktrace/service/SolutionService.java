@@ -106,7 +106,7 @@ public class SolutionService {
      * @return will return a solution with updated total votes on solution table
      */
     public SolutionDTO updateSolutionTotalVotes(int solutionId){
-        Optional<Solution> solutionDTO = solutionRepository.findById(solutionId);
+        Optional<Solution> solutionDTO = solutionRepository.findBySolutionId(solutionId);
 
 
         return solutionRepository.updateSolutionTotalVotesBySolutionId(solutionId);

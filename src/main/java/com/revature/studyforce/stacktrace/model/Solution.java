@@ -28,7 +28,7 @@ import com.revature.studyforce.user.model.User;
 @AllArgsConstructor
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Solution {
-
+//notetopush
     /**
      * This is the serial primary key for the solution table
      */

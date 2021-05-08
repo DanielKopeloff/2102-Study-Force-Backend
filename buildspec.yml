@@ -17,7 +17,7 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t pleasework.
+      - docker build -t pleasework .
       - docker tag pleasework:latest 868071628547.dkr.ecr.us-east-1.amazonaws.com/pleasework:latest
   post_build:
     commands:

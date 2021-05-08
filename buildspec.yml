@@ -10,24 +10,24 @@ phases:
       - aws --version
       #- $(aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 868071628547.dkr.ecr.us-east-1.amazonaws.com)
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
-      - REPOSITORY_URI=967240801169.dkr.ecr.us-east-1.amazonaws.com/rsf-ecr-repo
+      - REPOSITORY_URI=868071628547.dkr.ecr.us-east-1.amazonaws.com/pleasework
       #- COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
       - IMAGE_TAG=build-$(echo $CODEBUILD_BUILD_ID | awk -F":" '{print $2}')
   build:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...
-      - docker build -t rsf-ecr-repo .
-      - docker tag rsf-ecr-repo:latest 967240801169.dkr.ecr.us-east-1.amazonaws.com/rsf-ecr-repo:latest
+      - docker build -t pleasework.
+      - docker tag pleasework:latest 868071628547.dkr.ecr.us-east-1.amazonaws.com/pleasework:latest
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker images...
-      - docker push 967240801169.dkr.ecr.us-east-1.amazonaws.com/rsf-ecr-repo:latest
+      - docker push 868071628547.dkr.ecr.us-east-1.amazonaws.com/pleasework:latest
       #- docker push $REPOSITORY_URI:latest
       #- docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file...
-      - printf '[{"name":"rsf-ecr-repo","imageUri":"967240801169.dkr.ecr.us-east-1.amazonaws.com/rsf-ecr-repo"}]' > imagedefinitions.json
+      - printf '[{"name":"pleasework","imageUri":"868071628547.dkr.ecr.us-east-1.amazonaws.com/rsf-ecr-repo"}]' > imagedefinitions.json
       - cat imagedefinitions.json
 artifacts:
   files:
